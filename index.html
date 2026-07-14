@@ -1,126 +1,985 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Life | مطعم الوجبات الصحية - جرش</title>
+    <title>جرش هيلث & جرين لايف | مطعم الوجبات الصحية بجرش</title>
+
+    <!-- Performance Optimizations: Preconnect resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
+
+    <!-- AOS Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <style>
-        body { font-family: 'Tajawal', sans-serif; }
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
         .transition-all { transition: all 0.3s ease; }
-        .hidden-section { display: none; }
-        .active-filter { background-color: #059669; color: white; }
+        .active-filter { background-color: #16a34a; color: white; border-color: #16a34a; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #16a34a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #15803d;
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
 
-    <header id="navbar" class="fixed w-full z-50 transition-all bg-white/90 backdrop-blur-md shadow-sm">
+    <header id="navbar" class="fixed w-full z-50 transition-all bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-100">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-emerald-600">Green Life <span class="text-sm block font-light text-stone-500">جرش</span></div>
+            <!-- Merged Brand Name -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="bg-gradient-to-tr from-brand-600 to-emerald-400 p-2.5 rounded-2xl shadow-md text-white group-hover:scale-105 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-700 to-emerald-500 block leading-tight">جرين لايف</span>
+                    <span class="text-xs font-bold tracking-widest text-emerald-600 block">جرش هيلث • JARASH HEALTH</span>
+                </div>
+            </a>
             
-            <div class="hidden md:flex space-x-8 space-x-reverse items-center">
-                <a href="#home" class="hover:text-emerald-600 transition-all">الرئيسية</a>
-                <a href="#about" class="hover:text-emerald-600 transition-all">من نحن</a>
-                <a href="#menu" class="hover:text-emerald-600 transition-all">القائمة</a>
-                <a href="#plans" class="hover:text-emerald-600 transition-all">البرامج</a>
-                <a href="#contact" class="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700">اطلب الآن</a>
+            <!-- Desktop Menu Navigation -->
+            <div class="hidden lg:flex space-x-8 space-x-reverse items-center font-semibold text-stone-600">
+                <a href="#home" class="hover:text-brand-600 transition-all">الرئيسية</a>
+                <a href="#about" class="hover:text-brand-600 transition-all">من نحن</a>
+                <a href="#features" class="hover:text-brand-600 transition-all">لماذا نحن؟</a>
+                <a href="#menu" class="hover:text-brand-600 transition-all">القائمة</a>
+                <a href="#plans" class="hover:text-brand-600 transition-all">البرامج</a>
+                <a href="#testimonials" class="hover:text-brand-600 transition-all">آراء العملاء</a>
+                <a href="#faqs" class="hover:text-brand-600 transition-all">الأسئلة الشائعة</a>
+                <a href="#contact" class="bg-gradient-to-r from-brand-600 to-emerald-500 text-white px-6 py-2.5 rounded-full hover:from-brand-700 hover:to-emerald-600 transition-all shadow-lg shadow-emerald-600/20">اطلب الآن</a>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menuBtn" class="lg:hidden text-2xl text-stone-700 hover:text-brand-600 transition-all focus:outline-none p-1" aria-label="Toggle Menu">
+                <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </nav>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-stone-100 px-6 py-6 absolute w-full left-0 shadow-xl transition-all">
+            <div class="flex flex-col space-y-4 font-bold text-stone-700">
+                <a href="#home" class="mobile-nav-link hover:text-brand-600 transition-all py-2 border-b border-stone-50">الرئيسية</a>
+                <a href="#about" class="mobile-nav-link hover:text-brand-600 transition-all py-2 border-b border-stone-50">من نحن</a>
+                <a href="#features" class="mobile-nav-link hover:text-brand-600 transition-all py-2 border-b border-stone-50">لماذا نحن؟</a>
+                <a href="#menu" class="mobile-nav-link hover:text-brand-600 transition-all py-2 border-b border-stone-50">القائمة</a>
+                <a href="#plans" class="mobile-nav-link hover:text-brand-600 transition-all py-2 border-b border-stone-50">البرامج</a>
+                <a href="#testimonials" class="mobile-nav-link hover:text-brand-600 transition-all py-2 border-b border-stone-50">آراء العملاء</a>
+                <a href="#faqs" class="mobile-nav-link hover:text-brand-600 transition-all py-2 border-b border-stone-50">الأسئلة الشائعة</a>
+                <a href="#contact" class="mobile-nav-link bg-gradient-to-r from-brand-600 to-emerald-500 text-white text-center py-3 rounded-xl hover:from-brand-700 hover:to-emerald-600 transition-all shadow-md">اطلب الآن</a>
+            </div>
+        </div>
     </header>
 
-    <section id="home" class="pt-32 pb-20 px-6 bg-emerald-50">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 space-y-6">
-                <h1 class="text-5xl md:text-6xl font-black leading-tight text-stone-900">غذاؤك الصحي يبدأ من هنا</h1>
-                <p class="text-lg text-stone-600">وجبات صحية محسوبة السعرات تساعدك على الوصول إلى أهدافك الصحية مع طعم لا يُنسى في قلب مدينة جرش.</p>
-                <div class="flex gap-4">
-                    <a href="#contact" class="bg-emerald-600 text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-all">اطلب الآن</a>
-                    <a href="#menu" class="border border-emerald-600 text-emerald-600 px-8 py-3 rounded-full font-bold hover:bg-emerald-600 hover:text-white transition-all">استعرض القائمة</a>
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-36 pb-24 md:py-36 px-6 overflow-hidden bg-gradient-to-b from-brand-50 via-emerald-50/30 to-transparent">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-100/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-[300px] h-[300px] bg-emerald-100/50 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="container mx-auto flex flex-col lg:flex-row items-center gap-12">
+            <!-- Hero Content -->
+            <div class="lg:w-1/2 space-y-8 text-center lg:text-right" data-aos="fade-left">
+                <div class="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full font-bold text-sm tracking-wide">
+                    <span class="flex h-2.5 w-2.5 rounded-full bg-brand-500 animate-pulse"></span>
+                    رائد الوجبات الصحية المحسوبة في جرش
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.2] text-stone-900">
+                    غذاؤك الصحي يبدأ من <span class="text-transparent bg-clip-text bg-gradient-to-l from-brand-700 to-emerald-500">جرين لايف</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-stone-600 leading-relaxed font-medium">
+                    نقدم لك في <span class="font-bold text-brand-700">جرش هيلث & جرين لايف</span> وجبات طازجة، صحية، ومعدّة بعناية فائقة لتناسب أهدافك البدنية وسعراتك اليومية، مع أشهى طعم يجمع بين اللذة والصحة.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#contact" class="bg-gradient-to-r from-brand-600 to-emerald-500 text-white px-8 py-4 rounded-2xl font-bold hover:from-brand-700 hover:to-emerald-600 transition-all text-lg shadow-xl shadow-emerald-600/30 text-center transform hover:-translate-y-1">
+                        اطلب وجبتك الآن
+                    </a>
+                    <a href="#menu" class="border-2 border-brand-600 text-brand-700 hover:bg-brand-600 hover:text-white px-8 py-4 rounded-2xl font-bold transition-all text-lg text-center transform hover:-translate-y-1">
+                        استعرض القائمة
+                    </a>
+                </div>
+
+                <!-- Simple Badges -->
+                <div class="grid grid-cols-3 gap-4 pt-6 max-w-md mx-auto lg:mx-0 border-t border-stone-100">
+                    <div>
+                        <div class="text-2xl lg:text-3xl font-black text-brand-700">100%</div>
+                        <div class="text-xs text-stone-500 font-bold">مكونات طازجة</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl lg:text-3xl font-black text-brand-700">Kcal</div>
+                        <div class="text-xs text-stone-500 font-bold">محسوب بدقة</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl lg:text-3xl font-black text-brand-700">1500+</div>
+                        <div class="text-xs text-stone-500 font-bold">عميل سعيد</div>
+                    </div>
                 </div>
             </div>
-            <div class="md:w-1/2 mt-12 md:mt-0">
-                <img src="https://placehold.co/600x400/e7f4e9/059669?text=وجبة+صحية" alt="Healthy Meal" class="rounded-3xl shadow-2xl">
+
+            <!-- Hero Image with floating accents -->
+            <div class="lg:w-1/2 relative flex justify-center" data-aos="fade-right">
+                <div class="relative w-full max-w-lg">
+                    <!-- Main Image (Unsplash Meal) -->
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&auto=format&fit=crop&q=80"
+                         alt="مأكولات صحية لجرين لايف جرش"
+                         class="rounded-[2.5rem] shadow-2xl border-4 border-white object-cover aspect-[4/3] w-full"
+                         loading="lazy">
+
+                    <!-- Floating Badge 1 -->
+                    <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-50 animate-bounce" style="animation-duration: 3s;">
+                        <span class="text-3xl">🥗</span>
+                        <div>
+                            <p class="text-xs text-stone-400 font-bold">وجبات دايت</p>
+                            <p class="text-sm font-black text-stone-800">طعم غني ولذيذ</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 2 -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-50 animate-bounce" style="animation-duration: 4s;">
+                        <span class="text-3xl">🥑</span>
+                        <div>
+                            <p class="text-xs text-stone-400 font-bold">صحي 100%</p>
+                            <p class="text-sm font-black text-stone-800">مكونات طبيعية</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="menu" class="py-20 container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-12">قائمة الطعام الصحية</h2>
-        <div class="flex justify-center gap-4 mb-12" id="filterContainer">
-            <button onclick="filterMenu('all')" class="px-6 py-2 rounded-full border border-emerald-600 active-filter">الكل</button>
-            <button onclick="filterMenu('breakfast')" class="px-6 py-2 rounded-full border border-emerald-600">الإفطار</button>
-            <button onclick="filterMenu('main')" class="px-6 py-2 rounded-full border border-emerald-600">الوجبات الرئيسية</button>
-        </div>
-        
-        <div id="menuGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Cards -->
-            <div class="menu-item breakfast bg-white p-6 rounded-2xl shadow-lg" data-category="breakfast">
-                <img src="https://placehold.co/300x200/f3f4f6/333?text=شوفان" class="w-full h-48 object-cover rounded-xl mb-4">
-                <h3 class="text-xl font-bold">طبق الشوفان الفاكهي</h3>
-                <p class="text-stone-500 mb-2">300 سعرة حرارية</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-emerald-600 font-bold">2.50 دينار</span>
-                    <button class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-lg">إضافة</button>
-                </div>
-            </div>
-            <!-- Additional items would be here -->
-        </div>
-    </section>
-
-    <section id="plans" class="py-20 bg-stone-100">
+    <!-- About Section (من نحن) -->
+    <section id="about" class="py-24 bg-white relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12">برامجنا الغذائية</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-3xl shadow-md text-center border-t-4 border-emerald-500">
-                    <h3 class="text-2xl font-bold mb-4">خسارة الوزن</h3>
-                    <p class="text-4xl font-black mb-6">35 <span class="text-base text-stone-500">دينار/أسبوع</span></p>
-                    <ul class="text-stone-600 mb-8 space-y-2">
-                        <li>وجبات منخفضة السعرات</li>
-                        <li>متابعة أسبوعية</li>
-                    </ul>
-                    <button class="w-full py-3 bg-emerald-600 text-white rounded-xl">اختر البرنامج</button>
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Visual Left -->
+                <div class="lg:w-1/2 relative" data-aos="fade-left">
+                    <div class="relative max-w-md mx-auto">
+                        <!-- Background Accent -->
+                        <div class="absolute -bottom-8 -right-8 w-full h-full bg-brand-100 rounded-[2.5rem] -z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&auto=format&fit=crop&q=80"
+                             alt="تحضير الطعام الصحي"
+                             class="rounded-[2.5rem] shadow-xl object-cover aspect-square w-full"
+                             loading="lazy">
+                    </div>
                 </div>
-                <!-- Repeating cards... -->
-                <div class="bg-white p-8 rounded-3xl shadow-md text-center border-t-4 border-yellow-500">
-                    <h3 class="text-2xl font-bold mb-4">مرضى السكري</h3>
-                    <p class="text-4xl font-black mb-6">40 <span class="text-base text-stone-500">دينار/أسبوع</span></p>
-                    <ul class="text-stone-600 mb-8 space-y-2">
-                        <li>كربوهيدرات محسوبة</li>
-                        <li>مكونات طبيعية 100%</li>
-                    </ul>
-                    <button class="w-full py-3 bg-yellow-500 text-white rounded-xl">اختر البرنامج</button>
+
+                <!-- Text Right -->
+                <div class="lg:w-1/2 space-y-6" data-aos="fade-right">
+                    <div class="inline-block bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-black">
+                        قصتنا وهويتنا
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-black text-stone-900 leading-tight">
+                        نحن لسنا مجرد مطعم وجبات، بل شريكك في أسلوب حياتك الصحي بجرش
+                    </h2>
+                    <p class="text-stone-600 leading-relaxed text-lg">
+                        بدأت رحلة <span class="font-bold text-brand-700">جرين لايف (جرش هيلث)</span> من فكرة بسيطة: كيف ندمج بين المذاق الشهي للأكلات اليومية وبين الاحتياجات الغذائية الصحية؟
+                    </p>
+                    <p class="text-stone-600 leading-relaxed text-lg">
+                        في قلب مدينة جرش الأثرية العريقة، قمنا بتأسيس مطبخنا المتكامل لتقديم وجبات طازجة محسوبة الماكروز والسعرات الحرارية بدقة، بإشراف خبراء تغذية وطهاة محترفين يختارون أجود المكونات المحلية الطازجة يومياً.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="flex gap-3">
+                            <span class="text-2xl text-brand-600">✓</span>
+                            <div>
+                                <h4 class="font-bold text-stone-900">رؤية واضحة</h4>
+                                <p class="text-sm text-stone-500">نشر ثقافة التغذية الصحية المتكاملة.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-2xl text-brand-600">✓</span>
+                            <div>
+                                <h4 class="font-bold text-stone-900">جودة لا تساوم</h4>
+                                <p class="text-sm text-stone-500">أجود أنواع اللحوم والخضروات الطازجة.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 container mx-auto px-6">
-        <div class="max-w-4xl mx-auto bg-white p-12 rounded-3xl shadow-xl">
-            <h2 class="text-3xl font-bold mb-8">تواصل معنا</h2>
-            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" placeholder="الاسم الكامل" class="w-full p-4 border rounded-xl" required>
-                <input type="tel" placeholder="رقم الهاتف" class="w-full p-4 border rounded-xl" required>
-                <textarea placeholder="رسالتك" class="w-full p-4 border rounded-xl md:col-span-2 h-32"></textarea>
-                <button type="submit" class="w-full py-4 bg-emerald-600 text-white rounded-xl font-bold md:col-span-2">إرسال</button>
-            </form>
+    <!-- Features Section (لماذا نحن؟) -->
+    <section id="features" class="py-24 bg-stone-50 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-block bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-black mb-4">
+                    ميزاتنا الاستثنائية
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-stone-900">
+                    لماذا يختار عملاؤنا جرين لايف؟
+                </h2>
+                <p class="text-stone-500 mt-4 text-lg">
+                    نهتم بأدق تفاصيل وجباتك من المتجر وحتى عتبة منزلك، لضمان تجربة صحية فريدة.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-brand-50 text-brand-600 flex items-center justify-center rounded-2xl text-2xl font-bold mb-6 group-hover:bg-brand-600 group-hover:text-white transition-all">
+                        📋
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-3">حساب دقيق للسعرات</h3>
+                    <p class="text-stone-500 leading-relaxed">
+                        كل وجبة تأتي مع ملصق غذائي يوضح السعرات الحرارية بدقة تامة والماكروز (البروتينات، الكربوهيدرات، الدهون).
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-brand-50 text-brand-600 flex items-center justify-center rounded-2xl text-2xl font-bold mb-6 group-hover:bg-brand-600 group-hover:text-white transition-all">
+                        👨‍🍳
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-3">طهاة واختصاصيو تغذية</h3>
+                    <p class="text-stone-500 leading-relaxed">
+                        يتم إعداد خططك الغذائية ووجباتك اليومية من قبل طهاة متميزين بالتعاون مع أخصائيي تغذية معتمدين في الأردن.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-brand-50 text-brand-600 flex items-center justify-center rounded-2xl text-2xl font-bold mb-6 group-hover:bg-brand-600 group-hover:text-white transition-all">
+                        🛵
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-3">توصيل سريع بجرش</h3>
+                    <p class="text-stone-500 leading-relaxed">
+                        نضمن لك وصول الوجبات طازجة، دافئة، وفي الوقت المحدد تماماً بجميع مناطق محافظة جرش.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Premium Menu Section -->
+    <section id="menu" class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-block bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-black mb-4">
+                    مطبخنا الصحي
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-stone-900">
+                    قائمة الأطباق الصحية المتميزة
+                </h2>
+                <p class="text-stone-500 mt-4 text-lg">
+                    أطباق شهية مُعدّة بحب وعناية، محسوبة السعرات بدقة غنية بالبروتينات والفيتامينات اللازمة ليومك.
+                </p>
+            </div>
+
+            <!-- Categories Filters -->
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-16" id="filterContainer" data-aos="fade-up">
+                <button onclick="setActiveFilter(this); filterMenu('all')" class="menu-filter-btn px-6 py-3 rounded-2xl font-bold border-2 border-stone-200 text-stone-600 hover:border-brand-600 hover:text-brand-700 transition-all active-filter">الكل</button>
+                <button onclick="setActiveFilter(this); filterMenu('breakfast')" class="menu-filter-btn px-6 py-3 rounded-2xl font-bold border-2 border-stone-200 text-stone-600 hover:border-brand-600 hover:text-brand-700 transition-all">الافطار اللذيذ</button>
+                <button onclick="setActiveFilter(this); filterMenu('main')" class="menu-filter-btn px-6 py-3 rounded-2xl font-bold border-2 border-stone-200 text-stone-600 hover:border-brand-600 hover:text-brand-700 transition-all">الأطباق الرئيسية</button>
+                <button onclick="setActiveFilter(this); filterMenu('salads')" class="menu-filter-btn px-6 py-3 rounded-2xl font-bold border-2 border-stone-200 text-stone-600 hover:border-brand-600 hover:text-brand-700 transition-all">السلطات والمقبلات</button>
+            </div>
+
+            <div id="menuGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
+                <!-- Breakfast Card 1 -->
+                <div class="menu-item breakfast bg-stone-50 rounded-[2rem] overflow-hidden border border-stone-100 hover:shadow-2xl transition-all group duration-500" data-category="breakfast">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1517093157656-b9ecfe17ca6e?w=600&auto=format&fit=crop&q=80"
+                             alt="طبق الشوفان الفاكهي والجرانولا"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             loading="lazy">
+                        <span class="absolute top-4 right-4 bg-brand-600 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-lg">فطور</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">طبق الشوفان والجرانولا</h3>
+                            <span class="text-brand-700 font-extrabold text-lg flex-shrink-0">2.50 د.أ</span>
+                        </div>
+                        <p class="text-stone-500 text-sm mb-6 leading-relaxed">شوفان دافئ مطبوخ بحليب اللوز الخفيف، مزين بالمكسرات النيئة والعسل الطبيعي والفاكهة الطازجة.</p>
+
+                        <!-- Macros -->
+                        <div class="grid grid-cols-4 gap-2 bg-white p-3.5 rounded-2xl border border-stone-100 text-center mb-6">
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">سعرات</div>
+                                <div class="font-extrabold text-stone-800 text-sm">320</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">بروتين</div>
+                                <div class="font-extrabold text-stone-800 text-sm">12g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">كارب</div>
+                                <div class="font-extrabold text-stone-800 text-sm">45g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">دهون</div>
+                                <div class="font-extrabold text-stone-800 text-sm">8g</div>
+                            </div>
+                        </div>
+
+                        <button onclick="selectMeal('طبق الشوفان والجرانولا')" class="w-full py-3 bg-white hover:bg-brand-600 text-brand-700 hover:text-white font-bold rounded-xl border border-brand-200 hover:border-brand-600 transition-all text-sm flex items-center justify-center gap-2">
+                            <span>اطلب الوجبة</span>
+                            <span class="text-lg">🛒</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Breakfast Card 2 -->
+                <div class="menu-item breakfast bg-stone-50 rounded-[2rem] overflow-hidden border border-stone-100 hover:shadow-2xl transition-all group duration-500" data-category="breakfast">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80"
+                             alt="توست الأفوكادو والبيض"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             loading="lazy">
+                        <span class="absolute top-4 right-4 bg-brand-600 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-lg">فطور</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">توست الأفوكادو المميز</h3>
+                            <span class="text-brand-700 font-extrabold text-lg flex-shrink-0">3.20 د.أ</span>
+                        </div>
+                        <p class="text-stone-500 text-sm mb-6 leading-relaxed">خبز التوست الأسمر الكامل محمص مغطى بهريس الأفوكادو والليمون، بيض مسلوق، وبذور الشيا الغنية.</p>
+
+                        <!-- Macros -->
+                        <div class="grid grid-cols-4 gap-2 bg-white p-3.5 rounded-2xl border border-stone-100 text-center mb-6">
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">سعرات</div>
+                                <div class="font-extrabold text-stone-800 text-sm">380</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">بروتين</div>
+                                <div class="font-extrabold text-stone-800 text-sm">16g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">كارب</div>
+                                <div class="font-extrabold text-stone-800 text-sm">28g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">دهون</div>
+                                <div class="font-extrabold text-stone-800 text-sm">18g</div>
+                            </div>
+                        </div>
+
+                        <button onclick="selectMeal('توست الأفوكادو المميز')" class="w-full py-3 bg-white hover:bg-brand-600 text-brand-700 hover:text-white font-bold rounded-xl border border-brand-200 hover:border-brand-600 transition-all text-sm flex items-center justify-center gap-2">
+                            <span>اطلب الوجبة</span>
+                            <span class="text-lg">🛒</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Card 1 -->
+                <div class="menu-item main bg-stone-50 rounded-[2rem] overflow-hidden border border-stone-100 hover:shadow-2xl transition-all group duration-500" data-category="main">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&auto=format&fit=crop&q=80"
+                             alt="صدور دجاج مشوية مع أرز بسمتي"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             loading="lazy">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-lg">وجبة رئيسية</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">صدر الدجاج المشوي والأرز</h3>
+                            <span class="text-brand-700 font-extrabold text-lg flex-shrink-0">4.50 د.أ</span>
+                        </div>
+                        <p class="text-stone-500 text-sm mb-6 leading-relaxed">صدور دجاج متبلة ومطهوة ببراعة، تقدم مع الأرز البسمتي بالزعفران والخضار المشوية الطازجة.</p>
+
+                        <!-- Macros -->
+                        <div class="grid grid-cols-4 gap-2 bg-white p-3.5 rounded-2xl border border-stone-100 text-center mb-6">
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">سعرات</div>
+                                <div class="font-extrabold text-stone-800 text-sm">490</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">بروتين</div>
+                                <div class="font-extrabold text-stone-800 text-sm">42g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">كارب</div>
+                                <div class="font-extrabold text-stone-800 text-sm">52g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">دهون</div>
+                                <div class="font-extrabold text-stone-800 text-sm">9g</div>
+                            </div>
+                        </div>
+
+                        <button onclick="selectMeal('صدر الدجاج المشوي والأرز')" class="w-full py-3 bg-white hover:bg-brand-600 text-brand-700 hover:text-white font-bold rounded-xl border border-brand-200 hover:border-brand-600 transition-all text-sm flex items-center justify-center gap-2">
+                            <span>اطلب الوجبة</span>
+                            <span class="text-lg">🛒</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Card 2 -->
+                <div class="menu-item main bg-stone-50 rounded-[2rem] overflow-hidden border border-stone-100 hover:shadow-2xl transition-all group duration-500" data-category="main">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=80"
+                             alt="شريحة سالمون مشوية مع كينوا"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             loading="lazy">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-lg">وجبة رئيسية</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">سالمون بصلصة الليمون</h3>
+                            <span class="text-brand-700 font-extrabold text-lg flex-shrink-0">6.50 د.أ</span>
+                        </div>
+                        <p class="text-stone-500 text-sm mb-6 leading-relaxed">فيليه سالمون مشوي غني بالأوميغا 3، يقدم مع الكينوا المسلوقة بالخضار والهليون الطازج بجرش.</p>
+
+                        <!-- Macros -->
+                        <div class="grid grid-cols-4 gap-2 bg-white p-3.5 rounded-2xl border border-stone-100 text-center mb-6">
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">سعرات</div>
+                                <div class="font-extrabold text-stone-800 text-sm">540</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">بروتين</div>
+                                <div class="font-extrabold text-stone-800 text-sm">38g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">كارب</div>
+                                <div class="font-extrabold text-stone-800 text-sm">34g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">دهون</div>
+                                <div class="font-extrabold text-stone-800 text-sm">16g</div>
+                            </div>
+                        </div>
+
+                        <button onclick="selectMeal('سالمون بصلصة الليمون')" class="w-full py-3 bg-white hover:bg-brand-600 text-brand-700 hover:text-white font-bold rounded-xl border border-brand-200 hover:border-brand-600 transition-all text-sm flex items-center justify-center gap-2">
+                            <span>اطلب الوجبة</span>
+                            <span class="text-lg">🛒</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Card 3 -->
+                <div class="menu-item main bg-stone-50 rounded-[2rem] overflow-hidden border border-stone-100 hover:shadow-2xl transition-all group duration-500" data-category="main">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80"
+                             alt="ستيك لحم بقري تندرلوين مشوي"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             loading="lazy">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-lg">وجبة رئيسية</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">ستيك تندرلوين خفيف</h3>
+                            <span class="text-brand-700 font-extrabold text-lg flex-shrink-0">5.80 د.أ</span>
+                        </div>
+                        <p class="text-stone-500 text-sm mb-6 leading-relaxed">ستيك لحم بقري ممتاز تندرلوين مشوي ببطء، يقدم مع هريس البطاطا الحلوة اللذيذة والبروكلي.</p>
+
+                        <!-- Macros -->
+                        <div class="grid grid-cols-4 gap-2 bg-white p-3.5 rounded-2xl border border-stone-100 text-center mb-6">
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">سعرات</div>
+                                <div class="font-extrabold text-stone-800 text-sm">460</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">بروتين</div>
+                                <div class="font-extrabold text-stone-800 text-sm">36g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">كارب</div>
+                                <div class="font-extrabold text-stone-800 text-sm">30g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">دهون</div>
+                                <div class="font-extrabold text-stone-800 text-sm">12g</div>
+                            </div>
+                        </div>
+
+                        <button onclick="selectMeal('ستيك تندرلوين خفيف')" class="w-full py-3 bg-white hover:bg-brand-600 text-brand-700 hover:text-white font-bold rounded-xl border border-brand-200 hover:border-brand-600 transition-all text-sm flex items-center justify-center gap-2">
+                            <span>اطلب الوجبة</span>
+                            <span class="text-lg">🛒</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Salad Card 1 -->
+                <div class="menu-item salads bg-stone-50 rounded-[2rem] overflow-hidden border border-stone-100 hover:shadow-2xl transition-all group duration-500" data-category="salads">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80"
+                             alt="سلطة يونانية طازجة مع جبن الفيتا"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             loading="lazy">
+                        <span class="absolute top-4 right-4 bg-teal-600 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-lg">سلطات</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">السلطة اليونانية بالفيتا</h3>
+                            <span class="text-brand-700 font-extrabold text-lg flex-shrink-0">2.20 د.أ</span>
+                        </div>
+                        <p class="text-stone-500 text-sm mb-6 leading-relaxed">خيار، طماطم شيري، بصل، زيتون كالاماتا، وجبنة فيتا قليلة الدسم مغطاة بزيت الزيتون البكر والزعتر.</p>
+
+                        <!-- Macros -->
+                        <div class="grid grid-cols-4 gap-2 bg-white p-3.5 rounded-2xl border border-stone-100 text-center mb-6">
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">سعرات</div>
+                                <div class="font-extrabold text-stone-800 text-sm">180</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">بروتين</div>
+                                <div class="font-extrabold text-stone-800 text-sm">5g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">كارب</div>
+                                <div class="font-extrabold text-stone-800 text-sm">10g</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-400 font-bold">دهون</div>
+                                <div class="font-extrabold text-stone-800 text-sm">14g</div>
+                            </div>
+                        </div>
+
+                        <button onclick="selectMeal('السلطة اليونانية بالفيتا')" class="w-full py-3 bg-white hover:bg-brand-600 text-brand-700 hover:text-white font-bold rounded-xl border border-brand-200 hover:border-brand-600 transition-all text-sm flex items-center justify-center gap-2">
+                            <span>اطلب الوجبة</span>
+                            <span class="text-lg">🛒</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="plans" class="py-24 bg-stone-50 relative overflow-hidden">
+        <div class="absolute top-10 left-10 w-[300px] h-[300px] bg-brand-100/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-block bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-black mb-4">
+                    خططنا المرنة
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-stone-900">
+                    البرامج والاشتراكات الغذائية
+                </h2>
+                <p class="text-stone-500 mt-4 text-lg">
+                    اختر خطتك المفضلة وسنقوم بتوصيل وجباتك الصحية الطازجة يومياً إلى باب بيتك أو عملك في جرش.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Weight Loss Plan -->
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 border-2 border-stone-100 relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-50 rounded-bl-[5rem] -z-10"></div>
+                    <div>
+                        <div class="text-3xl mb-4">🥗</div>
+                        <h3 class="text-2xl font-bold text-stone-900 mb-2">خسارة الوزن</h3>
+                        <p class="text-stone-500 text-sm mb-6">وجبات لذيذة ومنخفضة السعرات تساعدك على خسارة الدهون بأمان.</p>
+
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-black text-brand-700">35</span>
+                            <span class="text-sm font-bold text-stone-500">دينار / أسبوعياً</span>
+                        </div>
+
+                        <ul class="text-stone-600 mb-8 space-y-4 text-sm font-semibold">
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> وجبتين باليوم (رئيسية + سلطة)
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> حلى دايت صحي مجاناً
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> متابعة الوزن والقياسات أسبوعياً
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> توصيل يومي طازج في جرش
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="selectMeal('برنامج خسارة الوزن (35 دينار/أسبوع)')" class="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-brand-600/20">
+                        اشترك الآن
+                    </button>
+                </div>
+
+                <!-- Muscle Building Plan -->
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 border-2 border-brand-500 relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 right-0 bg-brand-500 text-white font-bold text-xs px-4 py-2 rounded-bl-2xl">الأكثر طلباً ⭐</div>
+                    <div>
+                        <div class="text-3xl mb-4">💪</div>
+                        <h3 class="text-2xl font-bold text-stone-900 mb-2">البناء العضلي (الرياضي)</h3>
+                        <p class="text-stone-500 text-sm mb-6">وجبات غنية بالبروتينات النقية والكربوهيدرات المعقدة لزيادة الكتلة العضلية.</p>
+
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-black text-brand-700">45</span>
+                            <span class="text-sm font-bold text-stone-500">دينار / أسبوعياً</span>
+                        </div>
+
+                        <ul class="text-stone-600 mb-8 space-y-4 text-sm font-semibold">
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> وجبتين رئيسيتين ببروتين مضاعف
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> كربوهيدرات معقدة محسوبة
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> سناك طاقة ما قبل التمرين
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-brand-600 text-lg">✓</span> استشارة خبير تغذية رياضية مجانية
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="selectMeal('برنامج البناء العضلي (45 دينار/أسبوع)')" class="w-full py-4 bg-gradient-to-r from-brand-600 to-emerald-500 hover:from-brand-700 hover:to-emerald-600 text-white rounded-2xl font-bold transition-all shadow-lg shadow-brand-600/30">
+                        اشترك الآن
+                    </button>
+                </div>
+
+                <!-- Diabetes Plan -->
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 border-2 border-stone-100 relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-50 rounded-bl-[5rem] -z-10"></div>
+                    <div>
+                        <div class="text-3xl mb-4">🥑</div>
+                        <h3 class="text-2xl font-bold text-stone-900 mb-2">صديق مرضى السكري</h3>
+                        <p class="text-stone-500 text-sm mb-6">وجبات متوازنة منخفضة الحمل الجلايسيمي كربوهيدرات ذكية وطبيعية 100%.</p>
+
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-black text-yellow-600">40</span>
+                            <span class="text-sm font-bold text-stone-500">دينار / أسبوعياً</span>
+                        </div>
+
+                        <ul class="text-stone-600 mb-8 space-y-4 text-sm font-semibold">
+                            <li class="flex items-center gap-3">
+                                <span class="text-yellow-600 text-lg">✓</span> وجبات خالية من السكر المضاف تماماً
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-yellow-600 text-lg">✓</span> استخدام دهون صحية نباتية عالية الجودة
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-yellow-600 text-lg">✓</span> موازنة نسبة الألياف في كل طبق
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-yellow-600 text-lg">✓</span> توصيل يومي آمن ومغلف بإحكام
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="selectMeal('برنامج السكري (40 دينار/أسبوع)')" class="w-full py-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-2xl font-bold transition-all shadow-lg shadow-yellow-500/20">
+                        اشترك الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (آراء العملاء) -->
+    <section id="testimonials" class="py-24 bg-stone-100 relative overflow-hidden">
+        <div class="absolute top-1/2 left-0 w-80 h-80 bg-brand-200/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-block bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-black mb-4">
+                    قصص نجاح عملائنا
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-stone-900">
+                    آراء وتجارب ملهمة من زبائننا
+                </h2>
+                <p class="text-stone-500 mt-4 text-lg">
+                    فخورون بكوننا جزءاً من رحلتهم نحو حياة أكثر صحة ونشاطاً في جرش.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md relative hover:shadow-xl transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-6xl text-brand-200 absolute top-4 left-6 font-serif">“</span>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="أحمد العتوم" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <div>
+                            <h4 class="font-bold text-stone-900">أحمد العتوم</h4>
+                            <p class="text-xs text-stone-500 font-bold">مشترك ببرنامج خسارة الوزن</p>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed italic relative z-10">
+                        "اشتركت مع جرين لايف منذ شهرين وخسرت 12 كيلوغراماً دون أن أشعر بأي حرمان. الوجبات متنوعة ولذيذة جداً والتوصيل في جرش ممتاز ومثالي."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md relative hover:shadow-xl transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-6xl text-brand-200 absolute top-4 left-6 font-serif">“</span>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="سارة القرعان" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <div>
+                            <h4 class="font-bold text-stone-900">سارة القرعان</h4>
+                            <p class="text-xs text-stone-500 font-bold">رياضية ومشتركة بنظام البناء العضلي</p>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed italic relative z-10">
+                        "أعشق جودة البروتين هنا! صدور الدجاج واللحوم طرية ولذيذة وليست جافة كباقي المطاعم الصحية. ساعدني كثيراً في الالتزام ببرنامجي الرياضي."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md relative hover:shadow-xl transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <span class="text-6xl text-brand-200 absolute top-4 left-6 font-serif">“</span>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="محمد الزعبي" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <div>
+                            <h4 class="font-bold text-stone-900">محمد الزعبي</h4>
+                            <p class="text-xs text-stone-500 font-bold">مشترك ببرنامج مرضى السكري</p>
+                        </div>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed italic relative z-10">
+                        "كشخص مصاب بالسكري، من الصعب إيجاد خيارات لذيذة وآمنة في جرش. وفرت علي جرين لايف عناء الطبخ وحساب الكربوهيدرات. السكر لدي الآن منتظم ومستقر."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section (الأسئلة الشائعة) -->
+    <section id="faqs" class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-block bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-black mb-4">
+                    نجيب عن استفساراتكم
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-stone-900">
+                    الأسئلة الشائعة
+                </h2>
+                <p class="text-stone-500 mt-4 text-lg">
+                    كل ما تود معرفته عن برامجنا الغذائية وخدمات التوصيل في جرش.
+                </p>
+            </div>
+
+            <div class="space-y-4" data-aos="fade-up">
+                <!-- FAQ 1 -->
+                <div class="border border-stone-200 rounded-2xl bg-stone-50/50 transition-all overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-5 text-right font-bold text-stone-900 text-lg flex justify-between items-center hover:text-brand-600 focus:outline-none">
+                        <span>كيف يتم حساب السعرات الحرارية في وجباتكم؟</span>
+                        <span class="faq-icon text-xl text-brand-600 font-normal transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-stone-600 leading-relaxed">
+                            نستخدم برامج تغذية متطورة ومقاييس رقمية دقيقة لوزن المكونات قبل وبعد الطبخ، لضمان دقة معلومات الطاقة والماكروز المسجلة على كل وجبة.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-stone-200 rounded-2xl bg-stone-50/50 transition-all overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-5 text-right font-bold text-stone-900 text-lg flex justify-between items-center hover:text-brand-600 focus:outline-none">
+                        <span>هل يتوفر لديكم اشتراكات شهرية وأسبوعية؟</span>
+                        <span class="faq-icon text-xl text-brand-600 font-normal transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-stone-600 leading-relaxed">
+                            نعم بالتأكيد! نوفر اشتراكات مرنة تبدأ من أسبوع وتصل لعدة أشهر، تشمل وجبة رئيسية واحدة أو باقة متكاملة من وجبات الفطور والغداء والعشاء مع السناكس.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-stone-200 rounded-2xl bg-stone-50/50 transition-all overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-5 text-right font-bold text-stone-900 text-lg flex justify-between items-center hover:text-brand-600 focus:outline-none">
+                        <span>ما هي مناطق التوصيل المشمولة داخل جرش؟</span>
+                        <span class="faq-icon text-xl text-brand-600 font-normal transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-stone-600 leading-relaxed">
+                            نغطي كافة مناطق مدينة جرش، الوسط التجاري، سوف، ساكب، مرصع، ريمون، مخيم جرش، والمناطق المجاورة بالتنسيق مع فريق التوصيل الخاص بنا لضمان جودة الأكل.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-stone-200 rounded-2xl bg-stone-50/50 transition-all overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-5 text-right font-bold text-stone-900 text-lg flex justify-between items-center hover:text-brand-600 focus:outline-none">
+                        <span>هل يمكنني استبدال أو تغيير بعض مكونات الوجبة؟</span>
+                        <span class="faq-icon text-xl text-brand-600 font-normal transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-stone-600 leading-relaxed">
+                            بكل تأكيد، مصلحتك هي أولويتنا! يمكنك إبلاغنا بأي حساسية تجاه أطعمة معينة أو مكونات ترغب في استبدالها (مثل الكينوا بدلاً من الأرز) عند تثبيت طلبك.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Order Section (تواصل معنا) -->
+    <section id="contact" class="py-24 bg-gradient-to-t from-brand-50 to-transparent relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white p-8 sm:p-16 rounded-[2.5rem] shadow-2xl border border-stone-100 relative" data-aos="zoom-in">
+                <div class="absolute -top-10 -right-10 w-24 h-24 bg-brand-200/40 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-black text-stone-900 mb-4">اطلب وجبتك أو اشترك الآن</h2>
+                    <p class="text-stone-500 text-lg">أدخل بياناتك بالأسفل وسيتواصل معك خبير التغذية فوراً لتأكيد طلبك وتجهيز خطتك عبر الواتساب!</p>
+                </div>
+
+                <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-stone-700 mb-2">الاسم الكامل</label>
+                        <input id="formName" type="text" placeholder="مثال: أحمد العتوم" class="w-full p-4 border border-stone-200 rounded-2xl focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 transition-all" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-stone-700 mb-2">رقم الهاتف (الواتساب)</label>
+                        <input id="formPhone" type="tel" placeholder="مثال: 07xxxxxxxx" class="w-full p-4 border border-stone-200 rounded-2xl focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 transition-all" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold text-stone-700 mb-2">نوع الاشتراك أو تفاصيل الوجبة المطلوبة</label>
+                        <textarea id="formMessage" placeholder="مثال: أرغب بالاشتراك ببرنامج خسارة الوزن لمدة شهر، أو تفاصيل وجبة الغداء مع الإفطار..." class="w-full p-4 border border-stone-200 rounded-2xl focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 transition-all h-32"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-600 to-emerald-500 text-white rounded-2xl font-bold md:col-span-2 shadow-xl shadow-brand-600/30 hover:from-brand-700 hover:to-emerald-600 transition-all text-lg flex items-center justify-center gap-3 transform hover:-translate-y-1">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.458h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        إرسال الطلب عبر الواتساب مباشرة
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp CTA Widget -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <a href="https://api.whatsapp.com/send?phone=962777000000&text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%AC%D8%B1%D9%8A%D9%86%20%D9%84%D8%A7%D9%8A%D9%81%20%D8%AC%D8%B1%D8%B4%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D8%AD%D9%8A%D8%A9"
+           target="_blank"
+           class="flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold p-3 sm:px-5 sm:py-3.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group relative overflow-hidden"
+           aria-label="Contact us on WhatsApp">
+            <!-- Ripple Pulse -->
+            <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20 animate-ping -z-10 left-0 top-0"></span>
+
+            <!-- WhatsApp Icon -->
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.458h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span class="hidden sm:inline-block font-extrabold text-sm">تواصل معنا</span>
+        </a>
+    </div>
 
     <footer class="bg-stone-900 text-stone-400 py-12 text-center">
         <p>&copy; 2026 مطعم Green Life - جرش، الأردن. جميع الحقوق محفوظة.</p>
     </footer>
 
+    <!-- AOS JS Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon path or visual representation
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />`;
+            } else {
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />`;
+            }
+        });
+
+        // Close menu when clicking mobile links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />`;
+            });
+        });
+
         // Sticky Header
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) nav.classList.add('shadow-lg');
-            else nav.classList.remove('shadow-lg');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'bg-white');
+                nav.classList.remove('bg-white/95');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-white');
+                nav.classList.add('bg-white/95');
+            }
         });
+
+        // FAQs Accordion Behavior
+        const faqButtons = document.querySelectorAll('.faq-btn');
+        faqButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+
+                // Toggle active styles
+                if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                    content.style.maxHeight = '0px';
+                    content.style.opacity = '0';
+                    icon.textContent = '+';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.opacity = '1';
+                    icon.textContent = '-';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Set Active Menu Filter Styling
+        function setActiveFilter(button) {
+            const buttons = document.querySelectorAll('.menu-filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-filter');
+            });
+            button.classList.add('active-filter');
+        }
+
+        // Fill form with selected meal name and scroll down to contact section
+        function selectMeal(mealName) {
+            const messageInput = document.getElementById('formMessage');
+            messageInput.value = `أهلاً جرين لايف جرش، أرغب في طلب وجبة: ${mealName}. يرجى توجيهي وتأكيد الطلب.`;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
 
         // Filter Menu Function
         function filterMenu(category) {
@@ -134,10 +993,29 @@
             });
         }
 
-        // Form Submission
+        // Form Submission - WhatsApp Redirection
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('شكراً لتواصلك معنا! سنتصل بك في أقرب وقت.');
+
+            const name = document.getElementById('formName').value.trim();
+            const phone = document.getElementById('formPhone').value.trim();
+            const message = document.getElementById('formMessage').value.trim();
+
+            // Build the WhatsApp message content
+            const whatsappText = `أهلاً مطعم جرين لايف & جرش هيلث (Green Life & Jarash Health) 👋%0A%0A` +
+                                 `تفاصيل طلب جديد من الموقع الإلكتروني:%0A` +
+                                 `━━━━━━━━━━━━━━━━━━━━%0A` +
+                                 `👤 *الاسم:* ${encodeURIComponent(name)}%0A` +
+                                 `📞 *الهاتف:* ${encodeURIComponent(phone)}%0A` +
+                                 `💬 *الطلب/الرسالة:* ${encodeURIComponent(message)}%0A` +
+                                 `━━━━━━━━━━━━━━━━━━━━%0A` +
+                                 `تم الإرسال عبر الموقع الإلكتروني للمطعم 🌿`;
+
+            // WhatsApp link generation (using a generic WhatsApp API link or specific number if provided, defaults to standard start)
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=962777000000&text=${whatsappText}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>
